@@ -1,2 +1,2 @@
 # pokemon-react-game
-Catch them all.
+A pokemon game where you can catch them all.
