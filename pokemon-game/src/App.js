@@ -1,11 +1,10 @@
-import logo from './logo.svg';
-import PokemonSprite from './components/PokemonSprite';
 import './App.css';
+import Pokemon from "./components/Pokemon";
 
 function App() {
   return (
     <div className="App">
-      <PokemonSprite></PokemonSprite>
+      <Pokemon />
     </div>
   );
 }
