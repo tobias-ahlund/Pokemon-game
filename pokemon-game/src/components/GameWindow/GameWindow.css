@@ -1,8 +1,9 @@
 .background-image {
-    position: absolute;
+    /* position: absolute;
     top: 0;
     right: 0;
     width: 50%;
     height: 100%;
-    border: 1px solid black;
+    border: 1px solid black; */
+    position: relative;
 }

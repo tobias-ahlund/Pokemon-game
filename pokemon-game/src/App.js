@@ -5,9 +5,8 @@ import Pokemon from "./components/Pokemon";
 function App() {
   return (
     <div className="App">
-      <GameWindow>
-        <Pokemon />
-      </GameWindow>
+      <GameWindow />
+      <Pokemon />
     </div>
   );
 }
