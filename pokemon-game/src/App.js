@@ -1,6 +1,7 @@
 import './App.css';
 import GameWindow from "./components/GameWindow";
 import TextWindow from './components/TextWindow';
+import Pokedex from './components/Pokedex';
 import Pokemon from "./components/Pokemon";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className="App">
       <GameWindow />
+      <Pokedex />
       <TextWindow text="this is some text" />
       <Pokemon />
     </div>
