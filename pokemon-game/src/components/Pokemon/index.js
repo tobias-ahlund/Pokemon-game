@@ -31,7 +31,7 @@ const Pokemon = () => {
         return <div>Image is loading</div>;
     }
 
-    return <div class="pokemon"><img style={position} src={image} alt="Pokemon" /></div>;
+    return <div className="pokemon"><img style={position} src={image} alt="Pokemon" /></div>;
 };
 
 export default Pokemon;
