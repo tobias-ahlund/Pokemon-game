@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./Pokemon.css";
 
 const Pokemon = () => {
     const [image, setImage] = useState(null);
@@ -12,7 +13,12 @@ const Pokemon = () => {
             .then(data => setImage(data.sprites.front_default))
     }, []);
 
-    const top = Math.ceil(Math.random() * 100);
+    let top = Math.ceil(Math.random() * 100);
+
+    while (top >= 55) {
+        top = Math.ceil(Math.random() * 100);
+    }
+
     const left = Math.ceil(Math.random() * 100);
 
     const position = {
@@ -25,7 +31,7 @@ const Pokemon = () => {
         return <div>Image is loading</div>;
     }
 
-    return <div><img style={position} src={image} alt="Pokemon" /></div>;
+    return <div class="pokemon"><img style={position} src={image} alt="Pokemon" /></div>;
 };
 
 export default Pokemon;

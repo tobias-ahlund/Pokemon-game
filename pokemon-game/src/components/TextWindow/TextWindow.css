@@ -1,0 +1,8 @@
+.text-window {
+    height: 30%;
+    width: 100%;
+    border: 1px solid black;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
