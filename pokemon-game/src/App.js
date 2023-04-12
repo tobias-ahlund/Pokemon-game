@@ -4,6 +4,11 @@ import TextWindow from './components/TextWindow';
 import Pokemon from "./components/Pokemon";
 
 function App() {
+  const pokemon = document.querySelector(".pokemon");
+  if (pokemon) {
+    console.log("sdfgds");
+  }
+
   return (
     <div className="App">
       <GameWindow />

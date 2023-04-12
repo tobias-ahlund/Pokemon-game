@@ -3,6 +3,7 @@ import "./Pokemon.css";
 
 const Pokemon = () => {
     const [image, setImage] = useState(null);
+    const [name, setName] = useState(null);
 
     useEffect(() => {
         const randomPokemonId = Math.ceil(Math.random() * 150);
@@ -10,7 +11,10 @@ const Pokemon = () => {
 
         fetch(url)
             .then(response => response.json())
-            .then(data => setImage(data.sprites.front_default))
+            .then(data => {
+                setImage(data.sprites.front_default);
+                setName(data.forms[0].name);
+            });
     }, []);
 
     let top = Math.ceil(Math.random() * 100);
@@ -31,7 +35,7 @@ const Pokemon = () => {
         return <div>Image is loading</div>;
     }
 
-    return <div className="pokemon"><img style={position} src={image} alt="Pokemon" /></div>;
+    return <div className="pokemon"><img style={position} src={image} alt={name} /></div>;
 };
 
 export default Pokemon;
