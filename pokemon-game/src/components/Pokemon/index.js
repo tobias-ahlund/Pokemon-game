@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Pokemon.css";
 
-const Pokemon = () => {
+const Pokemon = (props) => {
     const [image, setImage] = useState(null);
     const [name, setName] = useState(null);
 
@@ -13,7 +13,7 @@ const Pokemon = () => {
             .then(response => response.json())
             .then(data => {
                 setImage(data.sprites.front_default);
-                setName(data.forms[0].name);
+                props.setName(data.forms[0].name);
             });
     }, []);
 
@@ -35,7 +35,7 @@ const Pokemon = () => {
         return <div>Image is loading</div>;
     }
 
-    return <div className="pokemon"><img style={position} src={image} alt={name} /></div>;
+    return <div  className="pokemon"><img style={position} src={image} alt={name} /></div>;
 };
 
 export default Pokemon;

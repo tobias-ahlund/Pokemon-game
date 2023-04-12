@@ -3,19 +3,17 @@ import GameWindow from "./components/GameWindow";
 import TextWindow from './components/TextWindow';
 import Pokedex from './components/Pokedex';
 import Pokemon from "./components/Pokemon";
+import { useState } from "react";
 
 function App() {
-  const pokemon = document.querySelector(".pokemon");
-  if (pokemon) {
-    console.log("sdfgds");
-  }
+  const [name, setName] = useState("hej");
 
   return (
     <div className="App">
       <GameWindow />
       <Pokedex />
-      <TextWindow text="this is some text" />
-      <Pokemon />
+      <TextWindow text={name} />
+      <Pokemon setName={setName}/>
     </div>
   );
 }
