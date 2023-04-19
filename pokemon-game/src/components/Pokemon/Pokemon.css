@@ -1,3 +1,25 @@
-.pokemon {
+button {
+    position: absolute;
     cursor: pointer;
+}
+
+.pokemon p {
+    color: white;
+    background-color: gray;
+}
+
+.sprite {
+    cursor: pointer;
+}
+
+.sprite:active, .sprite:hover {
+    animation: wobble 1s infinite;
+}
+
+@keyframes wobble {
+    0% {transform: rotate(-15deg);}
+    25% {transform: rotate(15deg);}
+    50% {transform: rotate(-15deg);}
+    75% {transform: rotate(15deg);}
+    100% {transform: rotate(-15deg);}
 }

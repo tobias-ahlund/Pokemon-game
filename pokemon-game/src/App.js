@@ -6,14 +6,20 @@ import Pokemon from "./components/Pokemon";
 import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState("hej");
+  const [name, setName] = useState("");
+  const [input, setInput] = useState("");
 
   return (
     <div className="App">
       <GameWindow />
       <Pokedex />
-      <TextWindow text={name} />
-      <Pokemon setName={setName}/>
+      <TextWindow 
+        text={input ? input : name && name + " appeared!"}
+      />
+      <Pokemon 
+        setName={setName}
+        setInput={setInput}
+      />
     </div>
   );
 }

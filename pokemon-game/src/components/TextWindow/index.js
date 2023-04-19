@@ -2,7 +2,11 @@ import "./TextWindow.css";
 
 const TextWindow = (props) => {
     return (
-        <div className="text-window"><p>{props.text}</p></div>
+        <div>
+            <div className="text-window">
+                <p className={props.slideUp}>{props.text}</p>
+            </div>
+        </div>
     );
 };
 
