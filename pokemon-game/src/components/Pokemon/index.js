@@ -4,39 +4,47 @@ import "./Pokemon.css";
 const Pokemon = (props) => {
     const [image, setImage] = useState(null);
     const [name, setName] = useState(null);
+    const [attempts, setAttempts] = useState(1);
 
     const randomPokemonId = Math.ceil(Math.random() * 150);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`;
 
     const fetchData = () => { 
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            setImage(data.sprites.front_default);
-            props.setName(data.forms[0].name);
-            setName(data.forms[0].name);
-        });
+        props.setInfo(null); 
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                props.setImage(data.sprites.front_default);
+                setImage(data.sprites.front_default);
+                props.setName(data.forms[0].name);
+                setName(data.forms[0].name);
+            });
     }
 
-    let attemptsCounter = 0;
+    let catchLevel = 50;
     const catchAttempt = () => {
-        let caught = false;
-        let catchRate = 50;
         let throwPoints = Math.ceil(Math.random() * 100);
-
-        if (catchRate >= throwPoints) {
-            props.setInput(name + " resisted, try again.");
-            attemptsCounter++;
-            if (attemptsCounter >= 3) {
-                props.setInput("Oh no, " + name + " ran away...");
-            }
-        } else if (catchRate < throwPoints) {
-            caught = true;
-        }
+        console.log(throwPoints);
         
-        if (caught) {
-            props.setInput("Success, " + name + " was caught. Why don't you read about " + name + " in your Pokedex?");
+        if (throwPoints < catchLevel && attempts < 3) {
+            setAttempts(attempts + 1);
+            props.setInfo(name + " resisted, try again. (Attempts " + attempts + "/3)");
+        } else if (attempts >= 3) {
+            props.setInfo("Oh no, " + name + " ran away... (Attempts: " + attempts + "/3)");
+            setImage(false);
+            setAttempts(1);
+        } else if (throwPoints >= catchLevel) {
+            props.setInfo("Success, " + name + " was caught. " + name + " was added to your Pokedex.");
+            setImage(false);
+            setAttempts(1);
+            addToPokedex({name, image});
         }
+    }
+
+    const addToPokedex = (name, image) => {
+        let pokemonCollection = [];
+        pokemonCollection.push(name, image);
+        console.log(pokemonCollection[0]);
     }
 
     let top = Math.ceil(Math.random() * 100);
@@ -46,6 +54,7 @@ const Pokemon = (props) => {
     }
 
     const left = Math.ceil(Math.random() * 100);
+    const level = Math.ceil(Math.random() * 100);
 
     const position = {
         position: "absolute",
@@ -56,7 +65,7 @@ const Pokemon = (props) => {
     if (!image) {
         return (
             <>
-                <button onClick={fetchData}>Load Pokemon</button>
+                <button onClick={fetchData}>Look for Pokémons</button>
                 <div>Image is loading/is not fetched</div>
             </>
         );
@@ -65,7 +74,7 @@ const Pokemon = (props) => {
     return (
         <>  
             <div style={position} className="pokemon">
-                <p>Click on {name} to catch it</p>
+                <p>Name: {name} Level: {level}</p>
                 <img 
                     onClick={catchAttempt}
                     className="sprite" 

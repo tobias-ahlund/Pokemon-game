@@ -7,18 +7,23 @@ import { useState } from "react";
 
 function App() {
   const [name, setName] = useState("");
-  const [input, setInput] = useState("");
+  const [info, setInfo] = useState("");
+  const [image, setImage] = useState(null);
 
   return (
     <div className="App">
       <GameWindow />
-      <Pokedex />
+      <Pokedex 
+        pokemon={image}
+        name={name}
+      />
       <TextWindow 
-        text={input ? input : name && name + " appeared!"}
+        text={info ? info : name && name + " appeared! Click on " + name + " to throw a pokéball."}
       />
       <Pokemon 
         setName={setName}
-        setInput={setInput}
+        setInfo={setInfo}
+        setImage={setImage}
       />
     </div>
   );

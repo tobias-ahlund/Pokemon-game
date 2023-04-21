@@ -4,7 +4,7 @@ const TextWindow = (props) => {
     return (
         <div>
             <div className="text-window">
-                <p className={props.slideUp}>{props.text}</p>
+                <p>{props.text}</p>
             </div>
         </div>
     );
