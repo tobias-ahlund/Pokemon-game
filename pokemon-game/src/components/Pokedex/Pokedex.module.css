@@ -49,6 +49,8 @@
 
 .screen {
     position: fixed;
+    display: flex;
+    justify-content: space-between;
     top: 0;
     left: 0;
     right: 0;
