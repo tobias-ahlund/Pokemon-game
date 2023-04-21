@@ -16,6 +16,10 @@ const Pokedex = (props) => {
             <div>
                 <p>{props.name}</p>
                 <img src={props.pokemon} alt="pokemon"/>
+                <button onClick={activatePokedex}>Go back</button>
+                <div>
+                    <p>{props.updatePokedex}</p>
+                </div>
             </div>
         </div>
         <img className={isActive ? styles.active_image : styles.image} src={pokedex} alt='The original pokedex.' onClick={activatePokedex}></img>

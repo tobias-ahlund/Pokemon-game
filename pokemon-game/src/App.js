@@ -9,6 +9,7 @@ function App() {
   const [name, setName] = useState("");
   const [info, setInfo] = useState("");
   const [image, setImage] = useState(null);
+  const [updatePokedex, setUpdatePokedex] = useState([]);
 
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
       <Pokedex 
         pokemon={image}
         name={name}
+        updatePokedex={updatePokedex}
       />
       <TextWindow 
         text={info ? info : name && name + " appeared! Click on " + name + " to throw a pokéball."}
@@ -24,6 +26,7 @@ function App() {
         setName={setName}
         setInfo={setInfo}
         setImage={setImage}
+        setUpdatePokedex={setUpdatePokedex}
       />
     </div>
   );
