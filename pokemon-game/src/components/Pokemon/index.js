@@ -37,14 +37,15 @@ const Pokemon = (props) => {
             props.setInfo("Success, " + name + " was caught. " + name + " was added to your Pokedex.");
             setImage(false);
             setAttempts(1);
-            addToPokedex({name, image});
+            addToPokedex(name, image);
         }
     }
 
     const addToPokedex = (name, image) => {
-        let pokemonCollection = [];
-        pokemonCollection.push(name, image);
-        console.log(pokemonCollection[0]);
+        let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || []; 
+        pokemonCollection.push({name: name, image: image});
+        localStorage.setItem('pokemonCollection', JSON.stringify(pokemonCollection));
+        console.log(pokemonCollection);
     }
 
     let top = Math.ceil(Math.random() * 100);
