@@ -21,6 +21,7 @@ const Pokedex = (props) => {
                 ))}
         </div>
         <img className={isActive ? styles.active_image : styles.image} src={pokedex} alt='The original pokedex.' onClick={activatePokedex}></img>
+        <button onClick={() => {setActive(false)}} className={!isActive ? styles.hidden : styles.closePokedex}>Close Pokedex</button>
     </div>
 }
 export default Pokedex;

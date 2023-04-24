@@ -1,4 +1,4 @@
-button {
+.fetch-data-button {
     position: absolute;
     cursor: pointer;
 }

@@ -1,4 +1,5 @@
 import './App.css';
+import StartSection from './components/StartSection';
 import GameWindow from "./components/GameWindow";
 import TextWindow from './components/TextWindow';
 import Pokedex from './components/Pokedex';
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div className="App">
+      <StartSection />
       <GameWindow />
       <Pokedex 
         pokemon={image}

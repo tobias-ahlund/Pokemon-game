@@ -71,25 +71,10 @@ const Pokemon = (props) => {
         console.log(pokemonCollection);
     }
 
-    let top = Math.ceil(Math.random() * 100);
-
-    while (top >= 55) {
-        top = Math.ceil(Math.random() * 100);
-    }
-
-    const left = Math.ceil(Math.random() * 100);
-    const level = Math.ceil(Math.random() * 100);
-
-    const position = {
-        position: "absolute",
-        top: `${top}vh`,
-        left: `${left}vw`
-    }
-
     if (!image) {
         return (
             <>
-                <button onClick={fetchData}>Look for Pokémons</button>
+                <button class="fetch-data-button" onClick={fetchData}>Look for Pokémons</button>
                 <div>Image is loading/is not fetched</div>
             </>
         );
