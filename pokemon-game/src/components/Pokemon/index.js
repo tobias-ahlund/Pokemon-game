@@ -7,6 +7,7 @@ const Pokemon = (props) => {
     const [attempts, setAttempts] = useState(1);
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
+    const [nameCounter, setNameCounter] = useState(2);
 
     const randomPokemonId = Math.ceil(Math.random() * 150);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`;
@@ -69,9 +70,12 @@ const Pokemon = (props) => {
     
         pokemonCollection.forEach(pokemon => {
             if (pokemon.name === name) {
-                return name = name + " dublett";
+                setNameCounter(nameCounter + 1);
+                while (pokemon.name === name + nameCounter) {
+                    setNameCounter(nameCounter + 1);
+                }
+                return name += " (" + nameCounter + ")";
             }        
-            console.log(false);
         })
 
         pokemonCollection.push({name: name, image: image});
