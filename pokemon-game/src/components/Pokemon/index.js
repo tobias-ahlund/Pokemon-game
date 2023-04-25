@@ -66,6 +66,14 @@ const Pokemon = (props) => {
 
     const addToPokedex = (name, image) => {
         let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || []; 
+    
+        pokemonCollection.forEach(pokemon => {
+            if (pokemon.name === name) {
+                return name = name + " dublett";
+            }        
+            console.log(false);
+        })
+
         pokemonCollection.push({name: name, image: image});
         localStorage.setItem('pokemonCollection', JSON.stringify(pokemonCollection));
         console.log(pokemonCollection);
