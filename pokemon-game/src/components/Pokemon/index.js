@@ -4,6 +4,9 @@ import "./Pokemon.css";
 const Pokemon = (props) => {
     const [image, setImage] = useState(null);
     const [name, setName] = useState(null);
+    const [weight, setWeight] = useState(null);
+    const [firstAbility, setFirstAbility] = useState(null);
+    const [secondAbility, setSecondAbility] = useState(null);
     const [attempts, setAttempts] = useState(1);
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
@@ -40,9 +43,15 @@ const Pokemon = (props) => {
                 setImage(data.sprites.front_default);
 
                 let name = data.forms[0].name;
+                let weight = data.weight;
+                let firstAbility = data.abilities[0].ability.name;
+                let secondAbility = data.abilities[1].ability.name;
                 name = name.charAt(0).toUpperCase() + name.slice(1);
                 props.setName(name)
                 setName(name);
+                setWeight(weight);
+                setFirstAbility(firstAbility);
+                setSecondAbility(secondAbility);
             });
     }
 
@@ -61,11 +70,11 @@ const Pokemon = (props) => {
             props.setInfo("Success, " + name + " was caught. " + name + " was added to your Pokedex.");
             setImage(false);
             setAttempts(1);
-            addToPokedex(name, image);
+            addToPokedex(name, image, weight, firstAbility, secondAbility);
         }
     }
 
-    const addToPokedex = (name, image) => {
+    const addToPokedex = (name, image, weight, firstAbility, secondAbility) => {
         let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || []; 
     
         pokemonCollection.forEach(pokemon => {
@@ -75,10 +84,10 @@ const Pokemon = (props) => {
                     setNameCounter(nameCounter + 1);
                 }
                 return name += " (" + nameCounter + ")";
-            }        
+            }
         })
 
-        pokemonCollection.push({name: name, image: image});
+        pokemonCollection.push({name: name, image: image, weight: weight, firstAbility: firstAbility, secondAbility: secondAbility});
         localStorage.setItem('pokemonCollection', JSON.stringify(pokemonCollection));
         console.log(pokemonCollection);
     }
