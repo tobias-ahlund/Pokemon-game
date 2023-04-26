@@ -1,15 +1,13 @@
 .fetch-data-button {
     position: absolute;
-    cursor: pointer;
-}
-
-.pokemon p {
-    color: white;
-    background-color: gray;
+    top: 50vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--purple);
 }
 
 .sprite {
-    cursor: pointer;
+    cursor: url("../../assets/images/pokeball.svg"), auto;
 }
 
 .sprite:active, .sprite:hover {
@@ -22,4 +20,36 @@
     50% {transform: rotate(-15deg);}
     75% {transform: rotate(15deg);}
     100% {transform: rotate(-15deg);}
+}
+
+.pokemonInfo {
+    background-color: var(--red);
+    border: 3px solid var(--ivory);
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+    text-align: left;
+    padding: 0.5rem;
+    padding-right: 3rem;
+    margin-left: 6rem;
+    position: relative;
+}
+
+.pokemonInfo p {
+    color: var(--ivory);
+    margin: 0;
+}
+
+.button-shadow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    background-color: white;
+    width: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    opacity: 0.15;
+    z-index: 0;
 }

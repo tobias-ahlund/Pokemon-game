@@ -8,7 +8,7 @@ const Pokemon = (props) => {
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
 
-    const randomPokemonId = Math.ceil(Math.random() * 3);
+    const randomPokemonId = Math.ceil(Math.random() * 100);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`;
 
     const fetchData = () => { 
@@ -18,7 +18,12 @@ const Pokemon = (props) => {
             top = Math.ceil(Math.random() * 100);
         }
 
-        const left = Math.ceil(Math.random() * 100);
+        let left = Math.ceil(Math.random() * 85);
+
+        while (left <= 15) {
+            left = Math.ceil(Math.random() * 85);
+        }
+
         const level = Math.ceil(Math.random() * 100);
 
         const position = {
@@ -45,7 +50,7 @@ const Pokemon = (props) => {
             });
     }
 
-    let catchLevel = 0;
+    let catchLevel = 75;
     const catchAttempt = () => {
         let throwPoints = Math.ceil(Math.random() * 100);
         
@@ -83,16 +88,19 @@ const Pokemon = (props) => {
 
     if (!image) {
         return (
-            <>
-                <button class="fetch-data-button" onClick={fetchData}>Look for Pokémons</button>
+            <div>
+                <button class="fetch-data-button" onClick={fetchData}>Look for Pokémons<span className="button-shadow"></span></button>
                 <div>Image is loading/is not fetched</div>
-            </>
+            </div>
         );
     }
 
     return (
         <div style={position} className="pokemon">
-            <p>Name: {name} Level: {level}</p>
+            <div className="pokemonInfo">
+                <p><strong>Name:</strong> {name}</p> 
+                <p><strong>Level:</strong> {level}</p>
+            </div>
             <img 
                 onClick={catchAttempt}
                 className="sprite" 

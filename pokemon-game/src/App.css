@@ -1,3 +1,15 @@
+:root {
+  box-sizing: border-box;
+  --blue: #66b5cd;
+  --green: #A3CE8F;
+  --green-light: #C2E7B1;
+  --green-dark: #A3CE8F;
+  --ivory: #FFF7E8;
+  --red: #E76A6A;
+  --yellow: #ffb218;
+  --purple: #B285FD;
+}
+
 .App {
   text-align: center;
 }
@@ -35,4 +47,16 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+button {
+  border-radius: 100px;
+  border: 3px solid var(--ivory);
+  background-color: var(--yellow);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  color: var(--ivory);
+  font-weight: bold;
+  cursor: pointer;
+  transition: 50ms ease;
 }

@@ -19,8 +19,10 @@ const Pokedex = (props) => {
     return <div className={isActive ? styles.active : styles.container}>
         <div className={isActive ? styles.screen : styles.hidden}>
             {caughtPokemons && caughtPokemons.map(caughtPokemon => (
-                    <div key={caughtPokemon.name}>
-                        <p>{caughtPokemon.name}</p>
+                    <div className={styles.pokedexItem} key={caughtPokemon.name}>
+                        <div className={styles.textWrapper}>
+                            <p>{caughtPokemon.name}</p>
+                        </div>
                         <img 
                         className={styles.pokemon_image} 
                         src={caughtPokemon.image} 

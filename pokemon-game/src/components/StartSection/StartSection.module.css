@@ -14,3 +14,17 @@
 .hidden {
     display: none;
 }
+
+.wrapper {
+    background-color: var(--blue);
+    border: 3px solid var(--ivory);
+    color: var(--ivory);
+    border-radius: 20px;
+    font-weight: bold;
+    width: 400px;
+    padding: 3rem 2rem 2rem;
+}
+
+.wrapper button, .wrapper p {
+    margin: 2rem;
+}
