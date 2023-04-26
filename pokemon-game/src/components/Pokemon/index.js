@@ -4,15 +4,11 @@ import "./Pokemon.css";
 const Pokemon = (props) => {
     const [image, setImage] = useState(null);
     const [name, setName] = useState(null);
-    const [weight, setWeight] = useState(null);
-    const [firstAbility, setFirstAbility] = useState(null);
-    const [secondAbility, setSecondAbility] = useState(null);
     const [attempts, setAttempts] = useState(1);
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
-    const [nameCounter, setNameCounter] = useState(2);
 
-    const randomPokemonId = Math.ceil(Math.random() * 150);
+    const randomPokemonId = Math.ceil(Math.random() * 3);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`;
 
     const fetchData = () => { 
@@ -43,19 +39,13 @@ const Pokemon = (props) => {
                 setImage(data.sprites.front_default);
 
                 let name = data.forms[0].name;
-                let weight = data.weight;
-                let firstAbility = data.abilities[0].ability.name;
-                let secondAbility = data.abilities[1].ability.name;
                 name = name.charAt(0).toUpperCase() + name.slice(1);
                 props.setName(name)
                 setName(name);
-                setWeight(weight);
-                setFirstAbility(firstAbility);
-                setSecondAbility(secondAbility);
             });
     }
 
-    let catchLevel = 50;
+    let catchLevel = 0;
     const catchAttempt = () => {
         let throwPoints = Math.ceil(Math.random() * 100);
         
@@ -70,26 +60,25 @@ const Pokemon = (props) => {
             props.setInfo("Success, " + name + " was caught. " + name + " was added to your Pokedex.");
             setImage(false);
             setAttempts(1);
-            addToPokedex(name, image, weight, firstAbility, secondAbility);
+            addToPokedex(name, image);
         }
     }
 
-    const addToPokedex = (name, image, weight, firstAbility, secondAbility) => {
+    const addToPokedex = (name, image) => {
         let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || []; 
-    
+        
+        let count = 1;
         pokemonCollection.forEach(pokemon => {
-            if (pokemon.name === name) {
-                setNameCounter(nameCounter + 1);
-                while (pokemon.name === name + nameCounter) {
-                    setNameCounter(nameCounter + 1);
+            if (pokemon.name === name || pokemon.name === name + "(" + count + ")") {
+                count++;
+                while (pokemon.name === name + count) {
+                    count++;
                 }
-                return name += " (" + nameCounter + ")";
-            }
+            } 
         })
 
-        pokemonCollection.push({name: name, image: image, weight: weight, firstAbility: firstAbility, secondAbility: secondAbility});
+        pokemonCollection.push({name: count > 1 ? name + "(" + count + ")" : name, image: image});
         localStorage.setItem('pokemonCollection', JSON.stringify(pokemonCollection));
-        console.log(pokemonCollection);
     }
 
     if (!image) {
