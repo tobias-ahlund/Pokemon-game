@@ -12,6 +12,7 @@ const Pokemon = (props) => {
     const [secondAbility, setSecondAbility] = useState(null);
     const [firstAbilityDescription, setFirstAbilityDescription] = useState(null);
     const [secondAbilityDescription, setSecondAbilityDescription] = useState(null);
+    const [catchAnimation, setCatchAnimation] = useState(null);
 
     const randomPokemonId = Math.ceil(Math.random() * 100);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`;
@@ -71,7 +72,7 @@ const Pokemon = (props) => {
             });
     }
 
-    let catchLevel = 75;
+    let catchLevel = 0;
     const catchAttempt = () => {
         let throwPoints = Math.ceil(Math.random() * 100);
         
@@ -84,10 +85,13 @@ const Pokemon = (props) => {
             setAttempts(1);
         } else if (throwPoints >= catchLevel) {
             props.setInfo("Success, " + name + " was caught. " + name + " was added to your Pokedex.");
-            setImage(null);
+            setCatchAnimation(true)
+            setTimeout(() => {
+                setImage(null);
+                setCatchAnimation(null);
+            }, 1000)
             setAttempts(1);
             addToPokedex(name, image, weight, firstAbility, secondAbility, firstAbilityDescription, secondAbilityDescription);
-            console.log(firstAbility);
         }
     }
 
@@ -134,7 +138,7 @@ const Pokemon = (props) => {
             </div>
             <img 
                 onClick={catchAttempt}
-                className={props.pokeball}
+                className={catchAnimation ? "sprite " + props.pokeball : props.pokeball + " wobble"}
                 src={image} 
                 alt={name}
             />

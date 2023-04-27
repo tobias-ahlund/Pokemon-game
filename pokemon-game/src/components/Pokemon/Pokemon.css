@@ -14,7 +14,7 @@
     cursor: url("../../assets/images/greatball.svg"), auto;
 }
 
-.sprite:active, .sprite:hover {
+.wobble {
     animation: wobble 1s infinite;
 }
 
@@ -67,4 +67,17 @@
     border-top-right-radius: 20px;
     opacity: 0.15;
     z-index: 0;
+}
+
+.sprite {
+    animation: catchAnimation 1s infinite ease-out;
+}
+
+@keyframes catchAnimation {
+    from {
+      transform: rotate(0deg) scale(1.5);
+    }
+    to {
+      transform: rotate(359deg) scale(0.1);
+    }
 }
