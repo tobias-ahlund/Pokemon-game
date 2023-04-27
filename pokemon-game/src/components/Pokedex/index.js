@@ -5,6 +5,7 @@ import { useState } from 'react';
 const Pokedex = (props) => {
     const [isActive, setActive] = useState(false);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
+    const [pokemonIndex, setPokemonIndex] = useState(0);
 
     let caughtPokemons = JSON.parse(localStorage.getItem('pokemonCollection'));
 
@@ -46,6 +47,18 @@ const Pokedex = (props) => {
                         onClick={() => {setSelectedPokemon(null)}} 
                         className={!isActive ? styles.hidden : styles.closePokedex}>
                             Back to Pokedex
+                        </button>
+
+                        <button 
+                        onClick={() => {
+                            inspectPokemon(caughtPokemons[pokemonIndex]); 
+                            setPokemonIndex(pokemonIndex + 1);
+                            pokemonIndex === caughtPokemons.length - 1 && setPokemonIndex(0);
+                            console.log(pokemonIndex);
+                            console.log(caughtPokemons.length)
+                        }} 
+                        className={styles.next}>
+                            Next Pokemon
                         </button>
                     </div>
                 </div>
