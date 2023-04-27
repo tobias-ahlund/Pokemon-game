@@ -134,7 +134,7 @@ const Pokemon = (props) => {
             </div>
             <img 
                 onClick={catchAttempt}
-                className="sprite" 
+                className={props.pokeball}
                 src={image} 
                 alt={name}
             />

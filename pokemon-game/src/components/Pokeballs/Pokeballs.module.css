@@ -1,0 +1,32 @@
+.pokeballs {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-content: center;
+    position: relative;
+    bottom: 10rem;
+}
+
+.pokeball, .greatball {
+    margin: 1rem;
+}
+
+.pokeball img, .greatball img {
+    cursor: pointer;
+}
+
+.pokeball p, .greatball p {
+    line-height: 0;
+}
+
+.pokeballTextWrapper {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--green-light);
+    border-radius: 100px;
+    height: auto;
+    width: auto;
+    padding: 0 1rem;
+    margin: 1rem 0;
+}

@@ -14,6 +14,8 @@ function App() {
   const [firstAbility, setFirstAbility] = useState(null);
   const [updatePokedex, setUpdatePokedex] = useState([]);
   const [hidden, setHidden] = useState(false);
+  const [pokeball, setPokeball] = useState("typePokeball");
+  console.log(pokeball);
 
   return (
     <div className="App">
@@ -30,6 +32,8 @@ function App() {
       />
       <TextWindow 
         text={info ? info : name && name + " appeared! Click on " + name + " to throw a pokéball."}
+        pokeball={() => setPokeball("typePokeball")}
+        greatball={() => setPokeball("typeGreatball")}
       />
       <MenuButton 
         handleClick={() => setHidden(false)}
@@ -40,6 +44,7 @@ function App() {
         setImage={setImage}
         setFirstAbility={setFirstAbility}
         setUpdatePokedex={setUpdatePokedex}
+        pokeball={pokeball}
       />
     </div>
   );

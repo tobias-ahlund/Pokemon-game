@@ -1,9 +1,6 @@
 import styles from "./StartSection.module.css";
-/* import { useState } from "react"; */
 
 const StartSection = (props) => {
-    /* const [hidden, setHidden] = useState(false); */
-
     return (
         <div className={props.hidden ? styles.hidden : styles.startSection}>
             <div className={styles.wrapper}>

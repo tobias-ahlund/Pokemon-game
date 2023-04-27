@@ -6,8 +6,12 @@
     background-color: var(--purple);
 }
 
-.sprite {
+.typePokeball {
     cursor: url("../../assets/images/pokeball.svg"), auto;
+}
+
+.typeGreatball {
+    cursor: url("../../assets/images/greatball.svg"), auto;
 }
 
 .sprite:active, .sprite:hover {
