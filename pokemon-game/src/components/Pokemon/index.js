@@ -4,10 +4,14 @@ import "./Pokemon.css";
 const Pokemon = (props) => {
     const [image, setImage] = useState(null);
     const [name, setName] = useState(null);
+    const [weight, setWeight] = useState(null);
     const [attempts, setAttempts] = useState(1);
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
     const [firstAbility, setFirstAbility] = useState(null);
+    const [secondAbility, setSecondAbility] = useState(null);
+    const [firstAbilityDescription, setFirstAbilityDescription] = useState(null);
+    const [secondAbilityDescription, setSecondAbilityDescription] = useState(null);
 
     const randomPokemonId = Math.ceil(Math.random() * 100);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`;
@@ -49,8 +53,21 @@ const Pokemon = (props) => {
                 props.setName(name)
                 setName(name);
 
-                props.setFirstAbility(data.forms[0].name)
-                setFirstAbility(data.forms[0].name)
+                setWeight(data.weight);
+
+                setFirstAbility(data.abilities[0].ability)
+                setSecondAbility(data.abilities[1].ability)
+
+                fetchAbilityDescription(data.abilities[0].ability.url, setFirstAbilityDescription);
+                fetchAbilityDescription(data.abilities[1].ability.url, setSecondAbilityDescription);
+            });
+    }
+
+    const fetchAbilityDescription = (url, abilityDescription) => {
+        fetch(url)
+            .then(response => response.json())
+            .then (data => {
+                abilityDescription(data.effect_entries[1].effect);
             });
     }
 
@@ -63,18 +80,18 @@ const Pokemon = (props) => {
             props.setInfo(name + " resisted, try again. (Attempts " + attempts + "/3)");
         } else if (attempts >= 3) {
             props.setInfo("Oh no, " + name + " ran away... (Attempts: " + attempts + "/3)");
-            setImage(false);
+            setImage(null);
             setAttempts(1);
         } else if (throwPoints >= catchLevel) {
             props.setInfo("Success, " + name + " was caught. " + name + " was added to your Pokedex.");
-            setImage(false);
+            setImage(null);
             setAttempts(1);
-            addToPokedex(name, image, firstAbility);
+            addToPokedex(name, image, weight, firstAbility, secondAbility, firstAbilityDescription, secondAbilityDescription);
             console.log(firstAbility);
         }
     }
 
-    const addToPokedex = (name, image) => {
+    const addToPokedex = (name, image, weight, firstAbility, secondAbility, firstAbilityDescription, secondAbilityDescription) => {
         let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || []; 
         
         let count = 1;
@@ -87,7 +104,15 @@ const Pokemon = (props) => {
             } 
         })
 
-        pokemonCollection.push({name: count > 1 ? name + "(" + count + ")" : name, image: image});
+        pokemonCollection.push({
+            name: count > 1 ? name + "(" + count + ")" : name,
+            image: image,
+            weight: weight,
+            firstAbility: firstAbility.name,
+            secondAbility: secondAbility.name,
+            firstAbilityDescription: firstAbilityDescription,
+            secondAbilityDescription: secondAbilityDescription
+        });
         localStorage.setItem('pokemonCollection', JSON.stringify(pokemonCollection));
     }
 

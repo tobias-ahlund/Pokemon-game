@@ -16,6 +16,8 @@ const Pokedex = (props) => {
         setSelectedPokemon(pokemon);
     }
 
+    console.log(caughtPokemons);
+
     return <div className={isActive ? styles.active : styles.container}>
         <div className={isActive ? styles.screen : styles.hidden}>
             {caughtPokemons && caughtPokemons.map(caughtPokemon => (
@@ -37,7 +39,9 @@ const Pokedex = (props) => {
                         <img src={selectedPokemon.image} alt={selectedPokemon.name}></img>
                         <p>Weight: {selectedPokemon.weight}</p>
                         <p>Ability: {selectedPokemon.firstAbility}</p>
+                        <p>Description: {selectedPokemon.firstAbilityDescription}</p>
                         <p>Ability: {selectedPokemon.secondAbility}</p>
+                        <p>Description: {selectedPokemon.secondAbilityDescription}</p>
                         <button 
                         onClick={() => {setSelectedPokemon(null)}} 
                         className={!isActive ? styles.hidden : styles.closePokedex}>
