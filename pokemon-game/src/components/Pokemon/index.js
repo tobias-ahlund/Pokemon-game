@@ -5,6 +5,7 @@ const Pokemon = (props) => {
     const [image, setImage] = useState(null);
     const [name, setName] = useState(null);
     const [weight, setWeight] = useState(null);
+    const [baseExperience, setBaseExperience] = useState(null);
     const [attempts, setAttempts] = useState(1);
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
@@ -56,6 +57,8 @@ const Pokemon = (props) => {
 
                 setWeight(data.weight);
 
+                setBaseExperience(data.base_experience);
+
                 setFirstAbility(data.abilities[0].ability)
                 setSecondAbility(data.abilities[1].ability)
 
@@ -96,7 +99,8 @@ const Pokemon = (props) => {
     }
 
     const addToPokedex = (name, image, weight, firstAbility, secondAbility, firstAbilityDescription, secondAbilityDescription) => {
-        let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || []; 
+        let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || [];
+        let experience = parseInt(localStorage.getItem('experience')) || 0;
         
         let count = 1;
         pokemonCollection.forEach(pokemon => {
@@ -118,6 +122,9 @@ const Pokemon = (props) => {
             secondAbilityDescription: secondAbilityDescription
         });
         localStorage.setItem('pokemonCollection', JSON.stringify(pokemonCollection));
+
+        experience += Math.ceil(baseExperience/10);
+        localStorage.setItem('experience', experience)
     }
 
     if (!image) {

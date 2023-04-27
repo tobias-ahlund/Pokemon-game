@@ -5,6 +5,7 @@ import TextWindow from './components/TextWindow';
 import Pokedex from './components/Pokedex';
 import Pokemon from "./components/Pokemon";
 import MenuButton from "./components/MenuButton";
+import ProgressBar from './components/ProgressBar';
 import { useState } from "react";
 
 function App() {
@@ -15,7 +16,6 @@ function App() {
   const [updatePokedex, setUpdatePokedex] = useState([]);
   const [hidden, setHidden] = useState(false);
   const [pokeball, setPokeball] = useState("typePokeball");
-  console.log(pokeball);
 
   return (
     <div className="App">
@@ -24,6 +24,7 @@ function App() {
         setHidden={() => setHidden(true)}
       />
       <GameWindow />
+      <ProgressBar />
       <Pokedex 
         pokemon={image}
         name={name}

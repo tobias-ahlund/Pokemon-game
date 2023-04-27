@@ -45,7 +45,7 @@ const Pokedex = (props) => {
                         <p>Description: {selectedPokemon.secondAbilityDescription}</p>
                         <button 
                         onClick={() => {setSelectedPokemon(null)}} 
-                        className={!isActive ? styles.hidden : styles.closePokedex}>
+                        className={!isActive ? styles.hidden : styles.backButton}>
                             Back to Pokedex
                         </button>
 
@@ -57,7 +57,7 @@ const Pokedex = (props) => {
                             console.log(pokemonIndex);
                             console.log(caughtPokemons.length)
                         }} 
-                        className={styles.next}>
+                        className={styles.nextButton}>
                             Next Pokemon
                         </button>
                     </div>
@@ -69,7 +69,7 @@ const Pokedex = (props) => {
         src={pokedex} alt='The original pokedex.'
         onClick={activatePokedex}>
         </img>
-        <button onClick={() => {setActive(false)}} className={!isActive ? styles.hidden : styles.closePokedex}>Close Pokedex</button>
+        <button onClick={() => {setActive(false)}} className={!isActive ? styles.hidden : styles.closeButton}>Close Pokedex</button>
     </div>
 }
 export default Pokedex;
