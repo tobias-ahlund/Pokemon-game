@@ -90,9 +90,10 @@
 }
 
 .closePokedex {
-    position: relative;
+    position: absolute;
     margin-top: 10rem;
     cursor: pointer;
+    right: 0;
 }
 
 @keyframes fadeIn {

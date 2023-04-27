@@ -7,6 +7,7 @@ const Pokemon = (props) => {
     const [attempts, setAttempts] = useState(1);
     const [level, setLevel] = useState("");
     const [position, setPosition] = useState("");
+    const [firstAbility, setFirstAbility] = useState(null);
 
     const randomPokemonId = Math.ceil(Math.random() * 100);
     const url = `https://pokeapi.co/api/v2/pokemon/${randomPokemonId}`;
@@ -47,6 +48,9 @@ const Pokemon = (props) => {
                 name = name.charAt(0).toUpperCase() + name.slice(1);
                 props.setName(name)
                 setName(name);
+
+                props.setFirstAbility(data.forms[0].name)
+                setFirstAbility(data.forms[0].name)
             });
     }
 
@@ -65,7 +69,8 @@ const Pokemon = (props) => {
             props.setInfo("Success, " + name + " was caught. " + name + " was added to your Pokedex.");
             setImage(false);
             setAttempts(1);
-            addToPokedex(name, image);
+            addToPokedex(name, image, firstAbility);
+            console.log(firstAbility);
         }
     }
 
