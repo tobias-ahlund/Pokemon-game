@@ -130,6 +130,7 @@ const Pokemon = (props) => {
             <div className="pokemonInfo">
                 <p><strong>Name:</strong> {name}</p> 
                 <p><strong>Level:</strong> {level}</p>
+                <span></span>
             </div>
             <img 
                 onClick={catchAttempt}

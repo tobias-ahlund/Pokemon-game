@@ -1,0 +1,10 @@
+.MenuButton {
+    z-index: 1;
+    position: absolute;
+    bottom: 10rem;
+    right: 2rem;
+    height: 4rem;
+    width: 4rem;
+    background-color: var(--blue);
+    padding: 0;
+}
