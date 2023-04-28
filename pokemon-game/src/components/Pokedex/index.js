@@ -5,7 +5,6 @@ import { useState } from 'react';
 const Pokedex = (props) => {
     const [isActive, setActive] = useState(false);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
-    const [pokemonIndex, setPokemonIndex] = useState(0);
 
     let caughtPokemons = JSON.parse(localStorage.getItem('pokemonCollection'));
 
@@ -16,8 +15,6 @@ const Pokedex = (props) => {
     const inspectPokemon = (pokemon) => {
         setSelectedPokemon(pokemon);
     }
-
-    console.log(caughtPokemons);
 
     return <div className={isActive ? styles.active : styles.container}>
         <div className={isActive ? styles.screen : styles.hidden}>
@@ -30,7 +27,12 @@ const Pokedex = (props) => {
                         className={styles.pokemon_image} 
                         src={caughtPokemon.image} 
                         alt={caughtPokemon.name} 
-                        onClick={() => inspectPokemon(caughtPokemon)} />
+                        onClick={() => {
+                            inspectPokemon(caughtPokemon);
+                            let index = caughtPokemons.findIndex(pokemon => pokemon.name === caughtPokemon.name);
+                            index++;
+                            console.log(index);
+                        }} />
                     </div>
                 ))}
             {selectedPokemon && (
@@ -51,11 +53,15 @@ const Pokedex = (props) => {
 
                         <button 
                         onClick={() => {
-                            inspectPokemon(caughtPokemons[pokemonIndex]); 
-                            setPokemonIndex(pokemonIndex + 1);
-                            pokemonIndex === caughtPokemons.length - 1 && setPokemonIndex(0);
-                            console.log(pokemonIndex);
-                            console.log(caughtPokemons.length)
+                            let index = caughtPokemons.findIndex(pokemon => pokemon.name === selectedPokemon.name);
+                            let indexCounter = index + 1;
+                            inspectPokemon(caughtPokemons[indexCounter++]); 
+                            
+                            if (indexCounter === caughtPokemons.length + 1) {
+                                indexCounter = 1;
+                                inspectPokemon(caughtPokemons[indexCounter]); 
+                            }
+                            console.log(indexCounter);
                         }} 
                         className={styles.nextButton}>
                             Next Pokemon
