@@ -10,6 +10,7 @@ const TextWindow = (props) => {
             <Pokeballs
                 greatball={props.greatball} 
                 pokeball={props.pokeball}
+                equipped={props.equipped}
             />
         </div>
     );

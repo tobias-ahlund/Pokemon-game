@@ -35,6 +35,7 @@ function App() {
         text={info ? info : name && name + " appeared! Click on " + name + " to throw a pokéball."}
         pokeball={() => setPokeball("typePokeball")}
         greatball={() => setPokeball("typeGreatball")}
+        equipped={pokeball}
       />
       <MenuButton 
         handleClick={() => setHidden(false)}

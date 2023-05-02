@@ -7,7 +7,7 @@ const StartSection = (props) => {
                 <h1>Pokemon game</h1>
                 <p>Catch as many Pokémons as possible, and read all about them in the Pokédex.</p>
                 <p>Press the button when you're ready.</p>
-                <button onClick={props.setHidden}>Go to game</button>
+                <button className={styles.startButton} onClick={props.setHidden}>Go to game<span></span></button>
             </div>
         </div>
     );
