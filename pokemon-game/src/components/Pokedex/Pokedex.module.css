@@ -191,8 +191,14 @@
     padding: 0 1.5rem 0 1.5rem;
 }
 
+.previousButton {
+    position: absolute;
+    top: 0;
+    left: 30%;
+}
+
 .nextButton {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 30%;
 }

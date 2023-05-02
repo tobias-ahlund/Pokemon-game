@@ -68,11 +68,30 @@ const Pokedex = (props) => {
                             if (indexCounter === caughtPokemons.length + 1) {
                                 indexCounter = 0;
                                 inspectPokemon(caughtPokemons[indexCounter]); 
+                                indexCounter++;
                             }
                             console.log(indexCounter);
-                        }} 
-                        className={styles.nextButton}>
-                            Next Pokemon
+                            }} 
+                            className={styles.nextButton}
+                        >
+                            &gt;&gt;
+                        </button>
+                        <button 
+                            onClick={() => {
+                                let index = caughtPokemons.findIndex(pokemon => pokemon.name === selectedPokemon.name);
+                                let indexCounter = index - 1;
+                                inspectPokemon(caughtPokemons[indexCounter++]); 
+                                
+                                if (indexCounter === 0) {
+                                    indexCounter = caughtPokemons.length - 1;
+                                    inspectPokemon(caughtPokemons[indexCounter]); 
+                                    indexCounter++;
+                                }
+                                console.log(indexCounter);
+                            }} 
+                            className={styles.previousButton}
+                        >
+                            &lt;&lt;
                         </button>
                     </div>
                 </div>
