@@ -16,6 +16,13 @@ const Pokedex = (props) => {
         setSelectedPokemon(pokemon);
     }
 
+    let lastPokemon = caughtPokemons.length;
+    let currentPokemon;
+    if (selectedPokemon != null) {
+        currentPokemon = caughtPokemons.findIndex(pokemon => pokemon.name === selectedPokemon.name);
+        currentPokemon += 1;
+    }
+
     return <div className={isActive ? styles.active : styles.container}>
         <div className={isActive ? styles.screen : styles.hidden}>
             {caughtPokemons && caughtPokemons.map(caughtPokemon => (
@@ -38,6 +45,7 @@ const Pokedex = (props) => {
             {selectedPokemon && (
                 <div className={styles.single_pokemon_container}>
                     <div className={styles.single_pokemon}>
+                        <p>{currentPokemon + "/" + lastPokemon}</p>
                         <p>{selectedPokemon.name}</p>
                         <img src={selectedPokemon.image} alt={selectedPokemon.name}></img>
                         <p>Weight: {selectedPokemon.weight}</p>
@@ -58,13 +66,32 @@ const Pokedex = (props) => {
                             inspectPokemon(caughtPokemons[indexCounter++]); 
                             
                             if (indexCounter === caughtPokemons.length + 1) {
-                                indexCounter = 1;
+                                indexCounter = 0;
                                 inspectPokemon(caughtPokemons[indexCounter]); 
+                                indexCounter++;
                             }
                             console.log(indexCounter);
-                        }} 
-                        className={styles.nextButton}>
-                            Next Pokemon
+                            }} 
+                            className={styles.nextButton}
+                        >
+                            &gt;&gt;
+                        </button>
+                        <button 
+                            onClick={() => {
+                                let index = caughtPokemons.findIndex(pokemon => pokemon.name === selectedPokemon.name);
+                                let indexCounter = index - 1;
+                                inspectPokemon(caughtPokemons[indexCounter++]); 
+                                
+                                if (indexCounter === 0) {
+                                    indexCounter = caughtPokemons.length - 1;
+                                    inspectPokemon(caughtPokemons[indexCounter]); 
+                                    indexCounter++;
+                                }
+                                console.log(indexCounter);
+                            }} 
+                            className={styles.previousButton}
+                        >
+                            &lt;&lt;
                         </button>
                     </div>
                 </div>

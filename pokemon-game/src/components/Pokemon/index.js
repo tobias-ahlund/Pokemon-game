@@ -130,7 +130,7 @@ const Pokemon = (props) => {
     if (!image) {
         return (
             <div>
-                <button class="fetch-data-button" onClick={fetchData}>Look for Pokémons<span className="button-shadow"></span></button>
+                <button className="fetch-data-button" onClick={fetchData}>Look for Pokémons<span className="button-shadow"></span></button>
                 <div>Image is loading/is not fetched</div>
             </div>
         );
