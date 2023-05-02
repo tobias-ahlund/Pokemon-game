@@ -26,37 +26,41 @@ const Pokedex = (props) => {
     return <div className={isActive ? styles.active : styles.container}>
         <div className={isActive ? styles.screen : styles.hidden}>
             {caughtPokemons && caughtPokemons.map(caughtPokemon => (
-                    <div className={styles.pokedexItem} key={caughtPokemon.name}>
-                        <div className={styles.textWrapper}>
-                            <p>{caughtPokemon.name}</p>
-                        </div>
-                        <img 
-                        className={styles.pokemon_image} 
-                        src={caughtPokemon.image} 
-                        alt={caughtPokemon.name} 
+                    <div 
+                        className={styles.pokedexItem} 
+                        key={caughtPokemon.name}
                         onClick={() => {
                             inspectPokemon(caughtPokemon);
                             let index = caughtPokemons.findIndex(pokemon => pokemon.name === caughtPokemon.name);
                             index++;
                             console.log(index);
-                        }} />
+                        }}
+                    >
+                    <div className={styles.textWrapper}>
+                        <p>{caughtPokemon.name}</p>
+                    </div>
+                    <img 
+                        className={styles.pokemon_image} 
+                        src={caughtPokemon.image} 
+                        alt={caughtPokemon.name} 
+                    />
                     </div>
                 ))}
             {selectedPokemon && (
                 <div className={styles.single_pokemon_container}>
                     <div className={styles.single_pokemon}>
                         <p>{currentPokemon + "/" + lastPokemon}</p>
-                        <p>{selectedPokemon.name}</p>
+                        <p><strong>{selectedPokemon.name}</strong></p>
                         <img src={selectedPokemon.image} alt={selectedPokemon.name}></img>
-                        <p>Weight: {selectedPokemon.weight}</p>
-                        <p>Ability: {selectedPokemon.firstAbility}</p>
-                        <p>Description: {selectedPokemon.firstAbilityDescription}</p>
-                        <p>Ability: {selectedPokemon.secondAbility}</p>
-                        <p>Description: {selectedPokemon.secondAbilityDescription}</p>
+                        <p><strong>Weight:</strong> {selectedPokemon.weight}</p>
+                        <p><strong>Ability:</strong> {selectedPokemon.firstAbility}</p>
+                        <p><strong>Description:</strong> {selectedPokemon.firstAbilityDescription}</p>
+                        <p><strong>Ability:</strong> {selectedPokemon.secondAbility}</p>
+                        <p><strong>Description:</strong> {selectedPokemon.secondAbilityDescription}</p>
                         <button 
                         onClick={() => {setSelectedPokemon(null)}} 
                         className={!isActive ? styles.hidden : styles.backButton}>
-                            Back to Pokedex
+                            Show all Pokémons
                         <span></span>
                         </button>
 
@@ -105,7 +109,17 @@ const Pokedex = (props) => {
         src={pokedex} alt='The original pokedex.'
         onClick={activatePokedex}>
         </img>
-        <button onClick={() => {setActive(false)}} className={!isActive ? styles.hidden : styles.closeButton}>Close Pokedex<span></span></button>
+        <button 
+            onClick={() => {
+                setActive(false); 
+                setSelectedPokemon(null)}
+            } 
+            className={
+                !isActive ? styles.hidden : styles.closeButton
+            }>
+            Close Pokedex
+            <span></span>
+        </button>
     </div>
 }
 export default Pokedex;

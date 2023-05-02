@@ -4,7 +4,6 @@ import GameWindow from "./components/GameWindow";
 import TextWindow from './components/TextWindow';
 import Pokedex from './components/Pokedex';
 import Pokemon from "./components/Pokemon";
-import MenuButton from "./components/MenuButton";
 import ProgressBar from './components/ProgressBar';
 import { useState } from "react";
 
@@ -36,8 +35,6 @@ function App() {
         pokeball={() => setPokeball("typePokeball")}
         greatball={() => setPokeball("typeGreatball")}
         equipped={pokeball}
-      />
-      <MenuButton 
         handleClick={() => setHidden(false)}
       />
       <Pokemon 
