@@ -40,23 +40,12 @@
     position: relative;
 }
 
-.pokemonInfo span {
-    position: absolute;
-    background-color: white;
-    top: 0;
-    left: 0;
-    height: 50%;
-    width: 100%;
-    opacity: 0.15;
-    border-top-right-radius: 20px;
-}
-
 .pokemonInfo p {
     color: var(--ivory);
     margin: 0;
 }
 
-.button-shadow {
+.button-shadow, .pokemonInfo span {
     position: absolute;
     top: 0;
     left: 0;
@@ -67,6 +56,10 @@
     border-top-right-radius: 20px;
     opacity: 0.15;
     z-index: 0;
+}
+
+.pokemonInfo span {
+    border-top-left-radius: 0;
 }
 
 .sprite {

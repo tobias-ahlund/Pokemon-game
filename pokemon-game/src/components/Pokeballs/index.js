@@ -5,17 +5,23 @@ import styles from "./Pokeballs.module.css";
 const Pokeballs = (props) => {
     return (
         <div className={styles.pokeballs}>
-            <div className={styles.pokeball}>
+            <div 
+                className={props.equipped === "typePokeball" ? styles.pokeball + " " + styles.equipped : styles.pokeball}
+                onClick={props.pokeball}
+            >
                 <div className={styles.pokeballTextWrapper}>
                     <p>Pokéball</p>
                 </div>
-                <img onClick={props.pokeball} src={pokeball} alt="pokeball" />
+                <img src={pokeball} alt="pokeball" />
             </div>
-            <div className={styles.greatball}>
+            <div 
+                className={props.equipped === "typeGreatball" ? styles.greatball + " " + styles.equipped : styles.pokeball}
+                onClick={props.greatball}
+            >
                 <div className={styles.pokeballTextWrapper}>
                     <p>Greatball</p>
                 </div>
-                    <img onClick={props.greatball} src={greatball} alt="greatball" />
+                <img src={greatball} alt="greatball" />
             </div>
         </div>
     );
