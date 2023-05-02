@@ -81,7 +81,7 @@
     z-index: 20;
     width: 100%;
     height: 100%;
-    position: absolute;
+    position: fixed;
     margin-left: auto;
     margin-right: auto;
     left: 0;
