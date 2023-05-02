@@ -10,13 +10,34 @@
     align-items: center;
 }
 
+.level {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--ivory);
+}
+
 label {
     color: var(--ivory);
     font-size: 20px;
 }
 
-progress {
-    height: 20px;
+progress[value] {
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
     width: 200px;
-    z-index: 20;
+    height: 20px;
+    margin-bottom: 15px;
+}
+  
+  progress[value]::-webkit-progress-bar {
+    background-color: #eee;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+  
+  progress[value]::-webkit-progress-value {
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
 }
