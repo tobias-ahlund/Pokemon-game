@@ -61,7 +61,12 @@
     height: 0px;
     background-color: white;
     animation: enlarge 1s ease 0.5s forwards;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.screen::-webkit-scrollbar {
+    display: none;
 }
 
 .hidden {
@@ -79,16 +84,20 @@
 
 .singlePokemonContainer {
     z-index: 20;
-    width: 100%;
-    height: 100%;
+    width: calc(100% - 160px);
     position: fixed;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    background-color: white;
-    overflow: auto;
+    margin: 100px auto 80px auto;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: scroll;
 }
+
+.singlePokemonContainer::-webkit-scrollbar {
+    display: none;
+}
+
+
 
 .backButton {
     position: absolute;
@@ -104,7 +113,7 @@
     opacity: 0;
     animation: appear 1s ease 1s forwards;
     position: absolute;
-    margin-top: 3rem;
+    margin-top: 2rem;
     cursor: pointer;
     transform: translateX(-50%);
     left: 50%;
@@ -115,7 +124,7 @@
         opacity: 0;
     };
     to {
-        opacity: 10;
+        opacity: 1;
     }
 }
 
@@ -124,7 +133,12 @@
         background-color: black;
     }
     to {
-        background-color: white;
+        background-color: rgb(183, 183, 183);
+        border: 80px solid lightgray;
+        border-top: 100px solid lightgray;
+        outline: solid 20px rgb(211, 41, 41);
+        outline-offset: -20px;
+        box-sizing: border-box;
         height: 100%;
         width: 100%;
         top: 0;
@@ -221,8 +235,9 @@
     border: 3px solid var(--ivory);
     color: var(--ivory);
     border-radius: 20px;
-    width: 400px;
-    padding: 5rem 2rem 6rem;
-    margin: 2rem auto auto auto;
+    width: 500px;
+    padding: 0 2rem 6rem;
+    margin: 2rem auto 2rem auto;
     position: relative;
 }
+
