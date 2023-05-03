@@ -1,4 +1,4 @@
-.xp_bar_container {
+.xpBarContainer {
     z-index: 1;
     position: fixed;
     bottom: 0;
@@ -9,7 +9,7 @@
     margin: 0 0 1rem 1rem;
 }
 
-.xp_bar {
+.xpBar {
     display: flex;
     align-items: flex-start;
     gap: 0.5rem;

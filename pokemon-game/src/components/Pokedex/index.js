@@ -40,15 +40,15 @@ const Pokedex = (props) => {
                         <p>{caughtPokemon.name}</p>
                     </div>
                     <img 
-                        className={styles.pokemon_image} 
+                        className={styles.pokemonImage} 
                         src={caughtPokemon.image} 
                         alt={caughtPokemon.name} 
                     />
                     </div>
                 ))}
             {selectedPokemon && (
-                <div className={styles.single_pokemon_container}>
-                    <div className={styles.single_pokemon}>
+                <div className={styles.singlePokemonContainer}>
+                    <div className={styles.singlePokemon}>
                         <p>{currentPokemon + "/" + lastPokemon}</p>
                         <p><strong>{selectedPokemon.name}</strong></p>
                         <img src={selectedPokemon.image} alt={selectedPokemon.name}></img>
@@ -105,7 +105,7 @@ const Pokedex = (props) => {
             )}
         </div>
         <img 
-        className={isActive ? styles.active_image : styles.image}
+        className={isActive ? styles.activeImage : styles.image}
         src={pokedex} alt='The original pokedex.'
         onClick={activatePokedex}>
         </img>

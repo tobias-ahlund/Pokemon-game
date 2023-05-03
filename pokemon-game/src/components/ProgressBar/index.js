@@ -36,9 +36,9 @@ const ProgressBar = (props) => {
     }, [experience, level, max]);
 
     return(
-        <div className={styles.xp_bar_container}>
+        <div className={styles.xpBarContainer}>
             <p className={styles.level}>LVL: {level}</p>
-            <div className={styles.xp_bar}>
+            <div className={styles.xpBar}>
                 <progress id="progress" className={styles.progress} value={experience} max={max}></progress>
                 <label htmlFor="progress">{experience} / {max}</label>
             </div>
