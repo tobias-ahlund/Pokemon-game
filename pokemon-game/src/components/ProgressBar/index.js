@@ -25,11 +25,9 @@ const ProgressBar = (props) => {
             localStorage.setItem('experience', 0);
             setLevel(updatedLevel);
 
-            let updatedMax = localMax * 1.5;
+            let updatedMax = Math.round(localMax * 1.5);
             setMax(updatedMax);
             localStorage.setItem('max', updatedMax);
-
-            localStorage.setItem('max', max * 1.5);
         }
 
         setLevel(parseInt(localStorage.getItem('level')) || 0);
@@ -39,9 +37,11 @@ const ProgressBar = (props) => {
 
     return(
         <div className={styles.xp_bar_container}>
-            <p className={styles.level}>Level: {level}</p>
-            <label htmlFor="progress"><b>Experience:</b> {experience} / {max}</label>
-            <progress id="progress" className={styles.progress} value={experience} max={max}>Hello</progress>
+            <p className={styles.level}>LVL: {level}</p>
+            <div className={styles.xp_bar}>
+                <progress id="progress" className={styles.progress} value={experience} max={max}></progress>
+                <label htmlFor="progress">{experience} / {max}</label>
+            </div>
         </div>
     )
 }

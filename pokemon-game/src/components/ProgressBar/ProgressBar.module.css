@@ -9,6 +9,12 @@
     margin: 0 0 1rem 1rem;
 }
 
+.xp_bar {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+}
+
 .level {
     font-size: 20px;
     font-weight: bold;
@@ -18,11 +24,14 @@
 
 label {
     color: var(--ivory);
-    font-size: 20px;
     padding: 0 0 0.5rem 0;
+    position: absolute;
+    left: 5px;
+    bottom: 8.5px;
 }
 
 progress[value] {
+    position: relative;
     appearance: none;
     -webkit-appearance: none;
     border: none;
@@ -31,13 +40,14 @@ progress[value] {
     margin-bottom: 15px;
 }
   
-  progress[value]::-webkit-progress-bar {
+progress[value]::-webkit-progress-bar {
     background-color: #eee;
     border-radius: 10px;
     transition: width 0.5s ease-in-out;
 }
   
-  progress[value]::-webkit-progress-value {
+progress[value]::-webkit-progress-value {
+    position: relative;
     background-color: rgb(255, 0, 0);
     border-radius: 10px;
     transition: width 0.5s ease-in-out;

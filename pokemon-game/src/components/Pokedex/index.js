@@ -6,7 +6,7 @@ const Pokedex = (props) => {
     const [isActive, setActive] = useState(false);
     const [selectedPokemon, setSelectedPokemon] = useState(null);
 
-    let caughtPokemons = JSON.parse(localStorage.getItem('pokemonCollection'));
+    let caughtPokemons = JSON.parse(localStorage.getItem('pokemonCollection')) || [];
 
     const activatePokedex = () => {
         setActive(isActive => !isActive);
