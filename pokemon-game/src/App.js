@@ -4,7 +4,6 @@ import GameWindow from "./components/GameWindow";
 import TextWindow from './components/TextWindow';
 import Pokedex from './components/Pokedex';
 import Pokemon from "./components/Pokemon";
-import ProgressBar from './components/ProgressBar';
 import { useState } from "react";
 
 function App() {
@@ -23,7 +22,6 @@ function App() {
         setHidden={() => setHidden(true)}
       />
       <GameWindow />
-      <ProgressBar />
       <Pokedex 
         pokemon={image}
         name={name}

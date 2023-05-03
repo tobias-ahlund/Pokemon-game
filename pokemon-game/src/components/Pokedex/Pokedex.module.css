@@ -50,7 +50,7 @@
 .screen {
     position: fixed;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     top: 0;
     left: 0;
     right: 0;
@@ -61,7 +61,7 @@
     height: 0px;
     background-color: white;
     animation: enlarge 1s ease 0.5s forwards;
-    overflow: auto; 
+    overflow: auto;
 }
 
 .hidden {

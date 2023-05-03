@@ -12,7 +12,7 @@ const ProgressBar = (props) => {
             setExperience(localStorage.getItem('experience'));
         }, 1000);
 
-        let localMax = parseFloat(localStorage.getItem('max')) || 100;
+        let localMax = parseFloat(localStorage.getItem('max')) || 50;
         setMax(localMax);
 
         let localLevel = parseInt(localStorage.getItem('level') || 0);

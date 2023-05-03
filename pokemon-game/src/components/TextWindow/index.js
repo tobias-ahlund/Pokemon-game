@@ -1,6 +1,7 @@
 import "./TextWindow.css";
 import Pokeballs from "../Pokeballs";
 import MenuButton from "../MenuButton";
+import ProgressBar from "../ProgressBar";
 
 const TextWindow = (props) => {
     return (
@@ -16,6 +17,7 @@ const TextWindow = (props) => {
                 pokeball={props.pokeball}
                 equipped={props.equipped}
             />
+            <ProgressBar />
         </div>
     );
 };
