@@ -94,11 +94,11 @@ const Pokemon = (props) => {
                 setCatchAnimation(null);
             }, 1000)
             setAttempts(1);
-            addToPokedex(name, image, weight, firstAbility, secondAbility, firstAbilityDescription, secondAbilityDescription);
+            addToPokedex();
         }
     }
 
-    const addToPokedex = (name, image, weight, firstAbility, secondAbility, firstAbilityDescription, secondAbilityDescription) => {
+    const addToPokedex = () => {
         let pokemonCollection = JSON.parse(localStorage.getItem('pokemonCollection')) || [];
         let experience = parseInt(localStorage.getItem('experience')) || 0;
         

@@ -31,7 +31,7 @@ const ProgressBar = (props) => {
         }
 
         setLevel(parseInt(localStorage.getItem('level')) || 0);
-        setExperience(localStorage.getItem('experience'));
+        setExperience(localStorage.getItem('experience') || 0);
 
     }, [experience, level, max]);
 
