@@ -14,6 +14,7 @@ function App() {
   const [updatePokedex, setUpdatePokedex] = useState([]);
   const [hidden, setHidden] = useState(false);
   const [pokeball, setPokeball] = useState("typePokeball");
+  const [catchLevel, setCatchLevel] = useState(50);
 
   return (
     <div className="App">
@@ -30,8 +31,14 @@ function App() {
       />
       <TextWindow 
         text={info ? info : name && name + " appeared! Click on " + name + " to throw a pokéball."}
-        pokeball={() => setPokeball("typePokeball")}
-        greatball={() => setPokeball("typeGreatball")}
+        pokeball={() => {
+          setPokeball("typePokeball")
+          setCatchLevel(50)
+        }}
+        greatball={() => {
+          setPokeball("typeGreatball")
+          setCatchLevel(33)
+        }}
         equipped={pokeball}
         handleClick={() => setHidden(false)}
       />
@@ -42,6 +49,7 @@ function App() {
         setFirstAbility={setFirstAbility}
         setUpdatePokedex={setUpdatePokedex}
         pokeball={pokeball}
+        catchLevel={catchLevel}
       />
     </div>
   );

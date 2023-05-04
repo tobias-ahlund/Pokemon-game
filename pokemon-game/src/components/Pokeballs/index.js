@@ -11,15 +11,17 @@ const Pokeballs = (props) => {
             >
                 <div className={styles.pokeballTextWrapper}>
                     <p>Pokéball</p>
+                    <p>Catch rate: 50%</p>
                 </div>
                 <img src={pokeball} alt="pokeball" />
             </div>
             <div 
-                className={props.equipped === "typeGreatball" ? styles.greatball + " " + styles.equipped : styles.pokeball}
+                className={props.equipped === "typeGreatball" ? styles.pokeball + " " + styles.equipped : styles.pokeball}
                 onClick={props.greatball}
             >
                 <div className={styles.pokeballTextWrapper}>
                     <p>Greatball</p>
+                    <p>Catch rate: 66%</p>
                 </div>
                 <img src={greatball} alt="greatball" />
             </div>

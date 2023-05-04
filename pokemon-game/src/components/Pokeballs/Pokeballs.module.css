@@ -17,6 +17,7 @@
     flex-direction: row-reverse;
     justify-content: flex-end;
     padding: 0.5rem;
+    position: relative;
 }
 
 .pokeball img, .greatball img {
@@ -36,6 +37,27 @@
     height: auto;
     width: auto;
     padding: 0 1rem;
+}
+
+.pokeballTextWrapper p:nth-of-type(2), .pokeballTextWrapper p:nth-of-type(4) {
+    position: absolute;
+    top: -10%;
+    right: -50%;
+    font-size: 0.6rem;
+    display: none;
+    padding: 0.5rem;
+    background-color: var(--ivory);
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: auto;
+}
+
+.pokeball:hover .pokeballTextWrapper p:nth-of-type(2) {
+    display: block;
+}
+
+.greatball:hover .pokeballTextWrapper p:nth-of-type(4) {
+    display: block;
 }
 
 .equipped {

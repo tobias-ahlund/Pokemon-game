@@ -75,7 +75,7 @@ const Pokemon = (props) => {
             });
     }
 
-    let catchLevel = 0;
+    let catchLevel = props.catchLevel;
     const catchAttempt = () => {
         let throwPoints = Math.ceil(Math.random() * 100);
         
