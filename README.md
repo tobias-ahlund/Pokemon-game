@@ -4,6 +4,6 @@
 
 A Pokémon game where you can catch them all. At least the first generation. 
 
-**[Try it out here.](https://celebrated-torte-97e8ae.netlify.app/)**
+**[Try it out here.](https://pokemon-game-react-project.netlify.app/)**
 
 
